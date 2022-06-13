@@ -1,9 +1,17 @@
 <html>
   <head>
+    <link rel="stylesheet" href="assets/styles.css" />
     <script src="dist/main.js" defer></script>
     <title>Title of SPA</title>
   </head>
   <body>
     <h1>H1 of SPA</h1>
+    <form action="/video" method="post" enctype="multipart/form-data" >
+      <input name="title" value="VideoTitle" />
+      <input type="file" name="video" />
+      <button id="submit">Submit</button>
+      <!-- Could have done input:type=submit, but that refreshes page -->
+      <!-- Will use ajax calls and prevent page refesh -->
+    </form>
   </body>
 </html>

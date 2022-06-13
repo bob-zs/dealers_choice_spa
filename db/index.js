@@ -18,14 +18,12 @@ const Video = conn.define('video', {
  * Possible Models:
  * - User
  *  - username
- *  - passwordHashed
- * 
- * - Upvotes - User/Video many-to-many relationship
- * 
  * 
  * - if time permits
  * - comments
  * - saved videos
+ * - passwordHashed
+ * - Upvotes - User/Video many-to-many relationship
  */
 
 module.exports = {
