@@ -21,7 +21,7 @@ app.post('/video', upload.single('video'), async (req, res, next) => {
   // do some database later
   const util = require('util');
   console.log(req);
-  console.log(util.inspect(req.file));
+  console.log(`FILE ${util.inspect(req.file)}`);
   console.log(util.inspect(req.body));
   console.log(`FIELDs ${util.inspect(req.body)}`);
   console.log(util.inspect(req.files)); // is undefined
