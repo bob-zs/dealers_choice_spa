@@ -24,7 +24,6 @@ app.post('/video', upload.single('video'), async (req, res, next) => {
   console.log(`FILE ${util.inspect(req.file)}`);
   console.log(util.inspect(req.body));
   console.log(`FIELDs ${util.inspect(req.body)}`);
-  console.log(util.inspect(req.files)); // is undefined
   // console.log(req.body);
   // console.log(req.files);
   console.log('HELO');
