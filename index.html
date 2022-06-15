@@ -1,17 +1,23 @@
 <html>
   <head>
-    <link rel="stylesheet" href="assets/styles.css" />
+    <link href="assets/styles.css" rel="stylesheet" />
     <script src="dist/main.js" defer></script>
     <title>Title of SPA</title>
   </head>
   <body>
-    <h1>H1 of SPA</h1>
-    <form enctype="multipart/form-data" >
-      <input type="text" name="title" value="VideoTitle" />
-      <input type="file" id="videoFileInput" name="video" />
-      <button id="submit">Submit</button>
-      <!-- Could have done input:type=submit, but that refreshes page -->
-      <!-- Will use ajax calls and prevent page refesh -->
-    </form>
-  </body>
+    <div class="container">
+        <h1>File Upload</h1>
+        <form id='form'>
+            <div class="input-group">
+                <label for='name'>Your name</label>
+                <input name='name' id='name' placeholder="Enter your name" />
+            </div>
+            <div class="input-group">
+                <label for='files'>Select files</label>
+                <input id='files'name='files' type="file" multiple>
+            </div>
+            <button class="submit-btn" type='submit'>Upload</button>
+        </form>
+    </div>
+</body>
 </html>

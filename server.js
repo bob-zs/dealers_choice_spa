@@ -1,43 +1,27 @@
-const express = require('express');
-const morgan = require('morgan');
+const express = require("express");
 const path = require('path');
-
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 const app = express();
-
-app.use(morgan('dev'));
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/assets', express.static('assets'));
 app.use('/dist', express.static('dist'));
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/', (_, res, next) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+})
 
-app.post('/video', upload.single('video'), async (req, res, next) => {
-
-
-
-  // do some database later
-  const util = require('util');
-  console.log(req);
-  console.log(`FILE ${util.inspect(req.file)}`);
-  console.log(util.inspect(req.body));
-  console.log(`FIELDs ${util.inspect(req.body)}`);
-  // console.log(req.body);
-  // console.log(req.files);
-  console.log('HELO');
-  // const util = require('util');
-  // console.log(util.inspect(req));
-
-  // const video = await Video.build({ name: '', path: '' });
-
-  // res.send(req.body.toString());
-  const statusCodeCreatedResource = 204;
-  // res.status(statusCodeCreatedResource).send(req);
-  res.send('hi');
+app.post("/upload_files", upload.single("files"), uploadFiles);
+function uploadFiles(req, res) {
+  console.log('Got here');
+  console.log(req.body);
+  console.log(req.file);
+  res.json({ message: "Successfully uploaded files" });
+}
+app.listen(3000, () => {
+    console.log(`Server started...`);
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`listening on url http://localhost:${port}/`)) 
-// print the url so dev can click the link on the terminal if possible
+app.post("/upload_files", upload.array("files"), uploadFiles);
