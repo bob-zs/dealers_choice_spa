@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link href="assets/styles.css" rel="stylesheet" />
+        <script src="dist/main.js" defer></script>
+        <title>Upload Videos</title>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label for='videoName'>Video Title</label>
+                <input name='videoName' id='videoName' placeholder="Enter Video Title" />
+            </div>
+            <div>
+                <label for='files'>Select files</label>
+                <input id='files'name='files' type="file" multiple>
+            </div>
+            <button class="submit-btn" type='submit'>Upload</button>
+        </form>
+        <div class="uploadedVideos">
+        </div>
+    </body>
+</html>
