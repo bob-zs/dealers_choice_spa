@@ -1,8 +1,13 @@
-const Sequalize = require('sequelize');
-const { STRING, TEXT } = Sequalize;
-const conn = new Sequalize(process.env.DATABASE_URL || 'postgres://localhost/acme_express_spa');
+const Sequelize = require('sequelize');
+const { STRING, UUID, UUIDV4 } = Sequelize;
+const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/acme_express_spa');
 
 const Video = conn.define('video', {
+  id: {
+    type: UUID,
+    primaryKey: true,
+    defaultValue: UUIDV4
+  },
   name: {
     type: STRING,
     allowNull: false,
@@ -11,21 +16,20 @@ const Video = conn.define('video', {
     type: STRING,
     allowNull: false
   }
-  // description
 })
 
-/**
- * Possible Models:
- * - User
- *  - username
- * 
- * - if time permits
- * - comments
- * - saved videos
- * - passwordHashed
- * - Upvotes - User/Video many-to-many relationship
- */
+const User = conn.define('user', {
+  name: {
+    type: Sequelize.TEXT,
+    unique: true,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    }
+  }
+});
 
 module.exports = {
-  Video
+  Video,
+  User
 }
